@@ -9,22 +9,17 @@ public class BurgerChef implements Runnable {
         // TODO Auto-generated method stub
         while (true) {
             if (isNotFull()) {
-                try {
-                    Thread.sleep(MAKE_TIME);
-                } catch (InterruptedException ignore) {
-                }
+                Main.wait(MAKE_TIME);
                 KitchenTable.add();
                 System.out.println("[Action] " + Thread.currentThread().getName() + " add a Burger on the kitchen table");
                 System.out.println("[Status] Burgers left: " + KitchenTable.burgers);
             }
+            Main.wait(WAIT_TIME);
             if (KitchenTable.readyToCombine() && ReadyTable.isNotFull()) {
                 KitchenTable.remove();
                 ReadyTable.add();
             }else {
-                try {
-                    Thread.sleep(WAIT_TIME);
-                } catch (InterruptedException ignore) {
-                }
+                Main.wait(WAIT_TIME);
             }
         }
     }

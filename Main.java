@@ -9,5 +9,10 @@ public class Main {
 		burgerChef.start();
 		waitress.start();
 	}
-
+	public static void wait(int waitTime) {
+		try {
+			Thread.sleep(waitTime);
+		} catch (InterruptedException ignore) {
+		}
+	}
 }

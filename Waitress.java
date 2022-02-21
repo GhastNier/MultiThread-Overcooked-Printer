@@ -1,8 +1,8 @@
 // You are free to add any attributes or methods you need.
 public class Waitress implements Runnable {
-    private String name = "Waitress";
-    private int WAIT_TIME = 1000;
-    private int SERVE_TIME = 10000; // 10 second
+    private final String name = "Waitress";
+    private final int WAIT_TIME = 1000;
+    private final int SERVE_TIME = 10000; // 10 second
 
     @Override
     public void run() {
@@ -12,18 +12,10 @@ public class Waitress implements Runnable {
                 ReadyTable.remove();
                 System.out.println("[Status] Meals left: " + ReadyTable.mealsLeft);
                 System.out.println("-----------------------------------------------------------------------------------");
-                try {
-                    Thread.sleep(SERVE_TIME);
-                } catch (InterruptedException ignored) {
-                }
+                Main.wait(SERVE_TIME);
             } else {
-                try {
-                    Thread.sleep(WAIT_TIME);
-                } catch (InterruptedException ignored) {
-                }
+                Main.wait(WAIT_TIME);
             }
         }
-
     }
-
 }

@@ -1,7 +1,7 @@
 //A work table which for chefs to place Burgers or Fries.
 //You need to handle race condition here.
 public class KitchenTable {
-    public static int limit = 5;
+    public final static int limit = 5;
     static int burgers = 0;
     static int fries = 0;
 

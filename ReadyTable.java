@@ -1,7 +1,7 @@
 //A table which the meals are put as soon as they become ready
 //You need to handle race condition here.
 public class ReadyTable {
-    public static int limit = 3;
+    public final static int limit = 3;
     static int mealsLeft = 0;
 
     public static boolean isNotFull() {
