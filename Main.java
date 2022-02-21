@@ -5,8 +5,8 @@ public class Main {
 		Thread burgerChef = new Thread(new BurgerChef(), "Burger Chef");
 		Thread friesChef = new Thread(new FriesChef(), "Fries Chef");
 		Thread waitress = new Thread(new Waitress(), "Waitress");
-		burgerChef.start();
 		friesChef.start();
+		burgerChef.start();
 		waitress.start();
 	}
 

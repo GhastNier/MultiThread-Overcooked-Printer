@@ -1,19 +1,26 @@
 //A work table which for chefs to place Burgers or Fries.
 //You need to handle race condition here.
 public class KitchenTable {
-	public static int limit = 5;
-	private static int now;
+    public static int limit = 5;
+    static int burgers = 0;
+    static int fries = 0;
 
-	public static boolean isNotFull(){
-		return limit != now;
-	}
-	public static boolean mealReady(){
-		return FriesChef.fries > 0 && BurgerChef.burgers > 0;
-	}
-	public synchronized static void add(){
-		now++;
-	}
-	public synchronized static void remove(){
-		now--;
-	}
+    public static boolean readyToCombine() {
+        return fries > 0 && burgers > 0;
+    }
+
+    static synchronized void add() {
+        if (Thread.currentThread().getName().equals("Burger Chef")) {
+            burgers++;
+        }
+        if (Thread.currentThread().getName().equals("Fries Chef")) {
+            fries++;
+        }
+    }
+
+    static synchronized void remove() {
+        fries--;
+        burgers--;
+    }
 }
+
