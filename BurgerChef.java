@@ -14,11 +14,10 @@ public class BurgerChef implements Runnable {
                 System.out.println("[Action] " + Thread.currentThread().getName() + " add a Burger on the kitchen table");
                 System.out.println("[Status] Burgers left: " + KitchenTable.burgers);
             }
-            Main.wait(WAIT_TIME);
             if (KitchenTable.readyToCombine() && ReadyTable.isNotFull()) {
                 KitchenTable.remove();
                 ReadyTable.add();
-            }else {
+            } else {
                 Main.wait(WAIT_TIME);
             }
         }

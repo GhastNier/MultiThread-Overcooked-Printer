@@ -10,11 +10,10 @@ public class FriesChef implements Runnable {
             if (isNotFull()) {
                 Main.wait(MAKE_TIME);
                 KitchenTable.add();
-                System.out.println("[Action] " + Thread.currentThread().getName() + " add Fries on the kitchen table");
+                System.out.println("[Action] " + Thread.currentThread().getName() + " add some Fries on the kitchen table");
                 System.out.println("[Status] Fries left: " + KitchenTable.fries);
 
             }
-            Main.wait(WAIT_TIME);
             if (KitchenTable.readyToCombine() && ReadyTable.isNotFull()) {
                 KitchenTable.remove();
                 ReadyTable.add();
@@ -23,8 +22,6 @@ public class FriesChef implements Runnable {
             }
         }
     }
-
-
 
     public boolean isNotFull() {
         return KitchenTable.fries < KitchenTable.limit;
